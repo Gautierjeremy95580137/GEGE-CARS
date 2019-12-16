@@ -46,8 +46,12 @@ public class AppControls {
 
         if(commands.equals("help")){
             helpCommand();
-        } else {
-            System.out.println("error");
+        } else if (commands.equals("exit")){
+            ExitCommand();
         }
+    }
+
+    public static void ExitCommand(){
+        System.out.println("goodbye");
     }
 }

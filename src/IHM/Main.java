@@ -16,7 +16,7 @@ public class Main {
         do {
             ch= AppControls.KeyboardScan();
             AppControls.commandsAction(ch);
-        } while (!ch.equals("quit"));
+        } while (!ch.equals("exit"));
 
     }
 }
