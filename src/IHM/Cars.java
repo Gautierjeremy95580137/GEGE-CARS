@@ -3,7 +3,7 @@ package IHM;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cars {
+public class Cars extends Users {
 
     static ArrayList<String> brand = new ArrayList<String>();
     static ArrayList<String> model = new ArrayList<String>();
