@@ -62,6 +62,18 @@ public class AppControls {
 
         } else if (commands.equals("removeuser")) {
             Users.removeuser();
+
+        } else if (commands.equals("addcar")) {
+            Cars.addcar();
+
+        } else if (commands.equals("editcar")) {
+            Cars.editcar();
+
+        } else if (commands.equals("removecar")) {
+            Cars.removecar();
+
+        } else if(commands.equals("listcars")) {
+            Cars.listcars();
         }
 
     }
