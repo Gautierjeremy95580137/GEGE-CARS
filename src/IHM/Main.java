@@ -1,8 +1,15 @@
 package IHM;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
+
+        //ArrayList<Object> userslist = new ArrayList<>();
+
+        List<Users> userList=  new ArrayList<>();
 
         String ch = "";
 

@@ -1,8 +1,13 @@
 package IHM;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import static IHM.Users.*;
+
 public class AppControls {
+
 
     /**
      * to display the list of controls
@@ -47,11 +52,21 @@ public class AppControls {
         if(commands.equals("help")){
             helpCommand();
         } else if (commands.equals("exit")){
-            ExitCommand();
+            exitCommand();
+        } else if (commands.equals("adduser")){
+            adduserCommand();
+
+        } else if (commands.equals("listusers")){
+            listusers();
+
+        } else if (commands.equals("edituser")) {
+            edituser();
         }
+
     }
 
-    public static void ExitCommand(){
+    private static void exitCommand() {
         System.out.println("goodbye");
     }
+//}
 }
