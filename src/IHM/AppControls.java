@@ -74,6 +74,12 @@ public class AppControls {
 
         } else if(commands.equals("listcars")) {
             Cars.listcars();
+
+        } else if (commands.equals("rentcar")) {
+            Rents.rentcar();
+
+        } else if (commands.equals("returncar")) {
+            Rents.returncar();
         }
 
     }

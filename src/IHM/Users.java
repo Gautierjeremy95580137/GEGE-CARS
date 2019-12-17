@@ -72,10 +72,10 @@ public class Users {
                 System.out.println("Country: " + country.get(i));
                 fn = sc.nextLine();
                 if (!fn.equals("")) { country.set(i,fn); }
-                System.out.println(" Departement: " + String.valueOf(departement.get(i)));
+                System.out.println(" Departement: " + departement.get(i));
                 fn = sc.nextLine();
                 if (!fn.equals("")) { departement.set(i,Integer.valueOf(fn));}
-                System.out.println("Age: "+ String.valueOf(age.get(i)));
+                System.out.println("Age: "+ age.get(i));
                 fn = sc.nextLine();
                 if (!fn.equals("")) { age.set(i,Integer.valueOf(fn));}
                 System.out.println("User's information successfully updated ");
