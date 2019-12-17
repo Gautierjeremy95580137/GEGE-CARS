@@ -92,6 +92,35 @@ public class Users {
 
 
     }
-
+        public static void removeuser() {
+        Scanner sc = new Scanner(System.in);
+            System.out.println("Remove user");
+            System.out.println("Firstname ? ");
+            String fn = sc.nextLine();
+            System.out.println("Lastname ?");
+            String ln = sc.nextLine();
+            String target = fn.toUpperCase() + ln.toUpperCase();
+            int gotit = 0;
+            for (int i = 0 ; i < firstname.size(); i++) {
+                String record = firstname.get(i).toUpperCase()+lastname.get(i).toUpperCase();
+                if (record.equals(target)) {
+                    System.out.println("User found ! ");
+                    //mettre la condition de location apres
+                    firstname.remove(i);
+                    lastname.remove(i);
+                    country.remove(i);
+                    departement.remove(i);
+                    age.remove(i);
+                    System.out.println("User successfully deleted ! ");
+                    String dept = String.valueOf(departement.get(i));
+                    String ab = String.valueOf(age.get(i));
+                    System.out.println("Firstname: "+firstname.get(i)+ ", Lastname: "+lastname.get(i)+ ", Country: "+country.get(i)+", Departement: "+ dept + ", Age:"+ ab);
+                    gotit = 1;
+                }
+            }
+            if (gotit == 0) {
+                System.out.println("User not found ! ");
+            }
+        }
     }
 

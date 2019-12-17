@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static IHM.Users.*;
-
 public class AppControls {
 
 
@@ -54,13 +52,16 @@ public class AppControls {
         } else if (commands.equals("exit")){
             exitCommand();
         } else if (commands.equals("adduser")){
-            adduserCommand();
+            Users.adduserCommand();
 
         } else if (commands.equals("listusers")){
-            listusers();
+            Users.listusers();
 
         } else if (commands.equals("edituser")) {
-            edituser();
+            Users.edituser();
+
+        } else if (commands.equals("removeuser")) {
+            Users.removeuser();
         }
 
     }
@@ -68,5 +69,5 @@ public class AppControls {
     private static void exitCommand() {
         System.out.println("goodbye");
     }
-//}
+
 }
