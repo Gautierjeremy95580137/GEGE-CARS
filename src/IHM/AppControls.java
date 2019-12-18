@@ -52,16 +52,30 @@ public class AppControls {
         } else if (commands.equals("exit")){
             exitCommand();
         } else if (commands.equals("adduser")){
-            Users.adduserCommand();
+            Users.adduser();
 
         } else if (commands.equals("listusers")){
-            Users.listusers();
+            Users.userlist();
 
         } else if (commands.equals("edituser")) {
-            Users.edituser();
+            Users xx = new Users();
+            System.out.println("Edit user");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Firstname ?");
+            String fn = sc.nextLine();
+            System.out.println("Lastname ? ");
+            String ln = sc.nextLine();
+            Users.edituser(fn , ln);
 
         } else if (commands.equals("removeuser")) {
-            Users.removeuser();
+            Users xx = new Users();
+            System.out.println("remove user");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Firstname ?");
+            String fn = sc.nextLine();
+            System.out.println("Lastname ? ");
+            String ln = sc.nextLine();
+            Users.removeuser(fn, ln);
 
         } else if (commands.equals("addcar")) {
             Cars.addcar();
