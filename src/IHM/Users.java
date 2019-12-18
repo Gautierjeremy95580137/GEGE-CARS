@@ -73,8 +73,6 @@ public class Users implements java.io.Serializable {
 
     public static void adduser(String fn, String ln, String c, int dep, int a) {
 
-
-
         Users xx = new Users();
         xx.SetFirstname(fn);
         xx.SetLastname(ln);
@@ -83,35 +81,7 @@ public class Users implements java.io.Serializable {
         xx.SetAge(a);
         listofUsers.add(xx);
     }
-    public static void adduser() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Add a new user");
-        System.out.println("Firstname ?");
-        String fn = sc.nextLine();
-        System.out.println("Lastname ? ");
-        String ln = sc.nextLine();
-        System.out.println("country ?");
-        String cy = sc.nextLine();
-        int a;
-        int dep;
-        do {
-            System.out.println("departement ? (between 1 and 95");
-            a = Integer.valueOf(sc.nextLine());
-             dep = a;
-        } while (a > 95 || a < 1);
-        do {
-            System.out.println("age ? (must be between 18 years and 110 years");
-            a = Integer.valueOf(sc.nextLine());
-        } while (a > 110 || a < 18);
-        Users xx = new Users();
-        xx.SetFirstname(fn);
-        xx.SetLastname(ln);
-        xx.SetCountry(cy);
-        xx.SetDepartement(dep);
-        xx.SetAge(a);
-        listofUsers.add(xx);
-        System.out.println("a new user is created");
-    }
+
 
        public static void userlist() {
             Users xx = new Users();

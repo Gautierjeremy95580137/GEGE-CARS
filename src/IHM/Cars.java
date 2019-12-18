@@ -3,109 +3,146 @@ package IHM;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cars extends Users {
-
-    static ArrayList<String> brand = new ArrayList<String>();
-    static ArrayList<String> model = new ArrayList<String>();
-    static ArrayList<String> ref = new ArrayList<String>();
-    static ArrayList<Integer> year = new ArrayList<Integer>();
+public class Cars  {
 
 
-    public static void addcar() {
+    static ArrayList<Cars> listcars = new ArrayList<>();
 
-        System.out.println("Add a new car ");
-        Scanner sc = new Scanner(System.in);
-        System.out.printf("Brand: ");
-        brand.add(sc.nextLine());
-        System.out.println("Model: ");
-        model.add(sc.nextLine());
-        System.out.println("Enter reference: ");
-        ref.add(sc.nextLine());
-        System.out.println("Year of the car: ");
-        int a;
-        a = Integer.valueOf(sc.nextLine());
-        year.add(a);
-        System.out.println(" a new car is added !");
+
+    private String Brand;
+    private String Model;
+    private String reference;
+    private int year;
+
+
+    public void Cars(){
+        this.Brand = Brand;
+        this.Model = Model;
+        this.reference = reference;
+        this.year = year;
+
     }
 
-    public static void editcar() {
+    public void SetBrand(String br) {
+        Brand = br;
+    }
+
+    public void SetModel(String mo) {
+        Model = mo;
+    }
+
+    public void SetRef(String ref) {
+        reference = ref;
+    }
+
+    public void SetYear(int ye) {
+        year = ye;
+    }
 
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println(" Search for a car ");
-        System.out.println(" Reference ");
-        String refff = sc.nextLine();
-        String target = refff.toUpperCase();
-        int gotit = 0;
-        for (int i = 0; i < ref.size(); i++) {
-            String record = ref.get(i).toUpperCase();
-            if (record.equals(target)) {
-                System.out.println(" Car found !");
-                System.out.println(" Brand: " + brand.get(i));
-                refff = sc.nextLine();
-                if (!refff.equals("")) {
-                    brand.set(i, refff);
-                }
-                System.out.println("Model: " + model.get(i));
-                refff = sc.nextLine();
-                if (!refff.equals("")) {
-                    model.set(i, refff);
-                }
-                System.out.println("Reference : " + ref.get(i));
-                refff = sc.nextLine();
-                if (!refff.equals("")) {
-                    ref.set(i, refff);
-                }
-                System.out.println("Year:  " + String.valueOf(year.get(i)));
-                refff = sc.nextLine();
-                if (!refff.equals("")) {
-                    year.set(i, Integer.valueOf(refff));
-                }
+    public String getBrand() {
+        return (Brand);
+    }
 
-                System.out.println("Car's information successfully updated ");
-                String year1 = String.valueOf(year.get(i));
+    public String getModel() {
+        return (Model);
+    }
 
-                System.out.println("Brand: " + brand.get(i) + ",Model: " + model.get(i) + ", Reference: " + ref.get(i) + ", Year:" + year1);
-                gotit = 1;
-            }
+    public String getReference() {
+        return (reference);
+    }
 
+    public int getYear() {
+        return (year);
+    }
+
+
+    public static void addcar(String br, String mo, String ref, int ye) {
+
+        Cars xx = new Cars();
+        xx.SetBrand(br);
+        xx.SetModel(mo);
+        xx.SetRef(ref);
+        xx.SetYear(ye);
+        listcars.add(xx);
+    }
+
+
+    public static void carlist() {
+        Cars xx = new Cars();
+        System.out.println("You have " + String.valueOf(listcars.size())+ " cars");
+        System.out.println("List of all your cars ");
+        for (int i = 0; i < listcars.size();i++) {
+            xx = listcars.get(i);
+            System.out.println(xx.getBrand()+ " "+ xx.getModel()+ " "+ xx.getReference()+ " "+ xx.getYear()+ " ");
         }
     }
 
-    public static void removecar() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Remove car");
-        System.out.println("Enter reference of the car ");
-        String rc = sc.nextLine();
-        String target = rc.toUpperCase();
+    public static void removecar(String ref) {
+        Cars xx = new Cars();
+        System.out.println("remove car");
+        String target = ref.toUpperCase();
         int gotit = 0;
-        for (int i = 0; i < ref.size(); i++) {
-            String record = ref.get(i).toUpperCase();
-            if (record.equals(target)) {
-                System.out.println("Car found ! ");
-                //mettre la condition de location apres
-                brand.remove(i);
-                model.remove(i);
-                ref.remove(i);
-                year.remove(i);
-                System.out.println("Car successfully deleted ! ");
-                String yea = String.valueOf(year.get(i));
-                System.out.println("Brand:  " + brand.get(i) + ", Model: " + model.get(i) + ", Reference: " + ref.get(i) + ", Year: " + yea);
+        for (int i = 0; i<listcars.size();i++) {
+            xx = listcars.get(i);
+            String record = xx.getReference().toUpperCase();
+            if(record.equals(target)) {
+                System.out.println("car found !");
+                //test si loc en cour
+                listcars.remove(i);
+                System.out.println("car is successfully deleted ! ");
                 gotit = 1;
+            }
+        }
+
+    }
+
+
+    public static void editcar(String ref) {
+
+        Scanner sc = new Scanner(System.in);
+        Cars xx = new Cars();
+        System.out.println("edit car");
+        String target = ref.toUpperCase();
+        int gotit = 0;
+        for (int i = 0; i < listcars.size(); i++) {
+
+            xx = listcars.get(i);
+            String record = xx.getReference().toUpperCase();
+            if (record.equals(target)) {
+                System.out.println(" Car found !");
+                System.out.println(" reference: " + xx.getReference());
+                System.out.println("please select enter to continue or write a new reference");
+                ref = sc.nextLine();
+                if (!ref.equals("")) {xx.SetRef(ref);}
+
+                System.out.println("Brand: " + xx.getBrand());
+                String brand = sc.nextLine();
+                if (!brand.equals("")) {xx.SetBrand(brand);}
+                String mo;
+                System.out.println("Model: " + xx.getModel());
+                mo = sc.nextLine();
+                if (!mo.equals("")) { xx.SetModel(mo); }
+
+                String ye;
+                System.out.println(" Year: " + String.valueOf(xx.getYear()));
+                ye = sc.nextLine();
+                if (!ye.equals("")) { xx.SetYear(Integer.valueOf(sc.nextLine())); }
+
+                System.out.println("car's information successfully updated ");
+                 ye = String.valueOf(xx.getYear());
+
+                System.out.println("Brand: "+ xx.getBrand()+ ",Model:"+ xx.getModel()+ ", Reference:"+ xx.getReference()+ ", Year: " + ye);
+                gotit = 1;
+
             }
         }
         if (gotit == 0) {
-            System.out.println("Car not found ! ");
+            System.out.println("user not found !");
         }
+
+
     }
 
-    public static void listcars() {
-
-        System.out.println(" We have " + brand.size() + "cars ! ");
-        System.out.println(" List of all cars ");
-        for (int i = 0; i < brand.size(); i++) {
-            String yea = String.valueOf(year.get(i));
-            System.out.println("Brand: " + brand.get(i) + ", Model: " + model.get(i) + ", Reference: " + ref.get(i) + ", Year: " + yea);
-        }
-    }
 }
+

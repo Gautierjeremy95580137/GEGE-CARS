@@ -52,7 +52,26 @@ public class AppControls {
         } else if (commands.equals("exit")){
             exitCommand();
         } else if (commands.equals("adduser")){
-            Users.adduser();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Add a new user");
+            System.out.println("Firstname ?");
+            String fn = sc.nextLine();
+            System.out.println("Lastname ? ");
+            String ln = sc.nextLine();
+            System.out.println("country ?");
+            String cy = sc.nextLine();
+            int a;
+            int dep;
+            do {
+                System.out.println("departement ? (between 1 and 95");
+                a = Integer.valueOf(sc.nextLine());
+                dep = a;
+            } while (a > 95 || a < 1);
+            do {
+                System.out.println("age ? (must be between 18 years and 110 years");
+                a = Integer.valueOf(sc.nextLine());
+            } while (a > 110 || a < 18);
+            Users.adduser(fn, ln , cy , dep , a);
 
         } else if (commands.equals("listusers")){
             Users.userlist();
@@ -78,22 +97,59 @@ public class AppControls {
             Users.removeuser(fn, ln);
 
         } else if (commands.equals("addcar")) {
-            Cars.addcar();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Add a new car");
+            System.out.println("Brand ?");
+            String br = sc.nextLine();
+            System.out.println("model ? ");
+            String mo = sc.nextLine();
+            System.out.println("reference ?");
+            String ref = sc.nextLine();
+            System.out.println("year ? ");
+            int ye = Integer.valueOf(sc.nextLine());
+            Cars.addcar(br, mo , ref , ye);
+            System.out.println("a new car is added");
 
         } else if (commands.equals("editcar")) {
-            Cars.editcar();
+            Cars xx = new Cars();
+            System.out.println("Edit car");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Reference ?");
+            String ref = sc.nextLine();
+            Cars.editcar(ref);
 
         } else if (commands.equals("removecar")) {
-            Cars.removecar();
+            Cars xx = new Cars();
+            System.out.println("remove car");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("reference ?");
+            String ref = sc.nextLine();
+            Cars.removecar(ref);
 
         } else if(commands.equals("listcars")) {
-            Cars.listcars();
+            Cars.carlist();
 
         } else if (commands.equals("rentcar")) {
-            Rents.rentcar();
+            System.out.println("Add a new rent");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Firstname: ");
+            String fn = sc.nextLine();
+            System.out.println("Lastname: ");
+            String ln = sc.nextLine();
+            System.out.println("Reference: ");
+            String ref = sc.nextLine();
+
+            System.out.println("New rent added");
+            Rents.rentcar(fn, ln ,ref);
 
         } else if (commands.equals("returncar")) {
-            Rents.returncar();
+            Rents xx = new Rents();
+            System.out.println("remove rental");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter the reference please ?");
+            String ref = sc.nextLine();
+            Rents.returncar(ref);
+
         }
 
     }
