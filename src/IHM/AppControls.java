@@ -100,6 +100,7 @@ public class AppControls {
                 a = Integer.valueOf(sc.nextLine());
             } while (a > 110 || a < 18);
             Users.adduser(fn, ln, cy, dep, a);
+            System.out.println("New user is added");
 
         } else if (commands.equals("listusers")) {
             Users.userlist();
