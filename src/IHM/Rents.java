@@ -8,20 +8,40 @@ import java.util.Scanner;
 public class Rents  {
 
 
+    /**
+     * create variables
+     */
+
     private  String Firstname;
     private  String Lastname;
     private  String reference;
     private String Day_of_rent;
     private String Day_rental_return;
+
+
+    /**
+     * create ArrayList of rents objects
+     */
+
     static ArrayList<Rents> listrents = new ArrayList<>();
 
+
+    /**
+     * Rents class constructor
+     */
+
     public void Rent(){
-        this.Firstname = Firstname;
-        this.Lastname = Lastname;
-        this.reference = reference;
-        this.Day_of_rent = Day_of_rent;
-        this.Day_rental_return = Day_rental_return;
-    }
+            this.Firstname = Firstname;
+            this.Lastname = Lastname;
+            this.reference = reference;
+            this.Day_of_rent = Day_of_rent;
+            this.Day_rental_return = Day_rental_return;
+        }
+
+    /**
+     * methods for set and get Rents variables
+      * @param fn
+     */
 
     public void setFirstname(String fn) {
         Firstname = fn;
@@ -62,6 +82,14 @@ public class Rents  {
     }
 
 
+    /**
+     * methods for rent a car
+     * @param fn
+     * @param ln
+     * @param ref
+     * @param dr
+     * @param dor
+     */
 
     public static void rentcar(String fn, String ln, String ref, String dr, String dor){
 
@@ -74,6 +102,14 @@ public class Rents  {
         listrents.add(xx);
 
     }
+
+
+    /**
+     * methods for return rental
+     * @param ref
+     */
+
+
     public static void returncar( String ref) {
         Rents xx = new Rents();
         System.out.println("return car");
@@ -93,6 +129,12 @@ public class Rents  {
         }
     }
 
+
+    /**
+     * methods for display the list of rents
+     */
+
+
     public static void listrent(){
         Rents xx = new Rents();
         System.out.println("You have " + String.valueOf(listrents.size())+ "rents");
@@ -103,6 +145,14 @@ public class Rents  {
         }
 
     }
+
+
+    /**
+     * method for search a user with a current rents
+     * @param Fn
+     * @param Ln
+     * @return
+     */
 
     public  static int searchrentuser(String Fn, String Ln) {
         String target = Fn.toUpperCase() + Ln.toUpperCase();
@@ -121,6 +171,12 @@ public class Rents  {
         }
         return(gotit);
     }
+
+
+    /**
+     * method for save the list of rents in a file
+     */
+
     public static void saverents(){
         Rents xx = new Rents();
         System.out.println("save rents");
@@ -140,6 +196,11 @@ public class Rents  {
             i.printStackTrace();
         }
     }
+
+
+    /**
+     * method for load a file with a list of rents
+     */
 
     public static void loadrents() {
         Rents xx = new Rents();

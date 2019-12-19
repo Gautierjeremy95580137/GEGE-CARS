@@ -7,14 +7,26 @@ import java.util.Scanner;
 public class Cars  {
 
 
+    /**
+     * create ArrayList of cars object
+     */
+
+
     static ArrayList<Cars> listcars = new ArrayList<>();
 
+    /**
+     * create variables
+     */
 
     private String Brand;
     private String Model;
     private String reference;
     private int year;
 
+
+    /**
+     * Cars class constructor
+     */
 
     public void Cars(){
         this.Brand = Brand;
@@ -23,6 +35,11 @@ public class Cars  {
         this.year = year;
 
     }
+
+    /**
+     * methods for set and get Cars variables
+     * @param br
+     */
 
     public void SetBrand(String br) {
         Brand = br;
@@ -58,6 +75,14 @@ public class Cars  {
     }
 
 
+    /**
+     * method for adding car
+     * @param br
+     * @param mo
+     * @param ref
+     * @param ye
+     */
+
     public static void addcar(String br, String mo, String ref, int ye) {
 
         Cars xx = new Cars();
@@ -69,6 +94,10 @@ public class Cars  {
     }
 
 
+    /**
+     * method for display the list of cars
+     */
+
     public static void carlist() {
         Cars xx = new Cars();
         System.out.println("You have " + String.valueOf(listcars.size())+ " cars");
@@ -78,6 +107,11 @@ public class Cars  {
             System.out.println(xx.getBrand()+ " "+ xx.getModel()+ " "+ xx.getReference()+ " "+ xx.getYear()+ " ");
         }
     }
+
+    /**
+     * method for remove a car in list of cars
+     * @param ref
+     */
 
     public static void removecar(String ref) {
         Cars xx = new Cars();
@@ -97,6 +131,11 @@ public class Cars  {
         }
 
     }
+
+    /**
+     * method for edit car
+     * @param ref
+     */
 
 
     public static void editcar(String ref) {
@@ -144,6 +183,12 @@ public class Cars  {
 
 
     }
+
+
+    /**
+     * method for save the list of cars in a file
+     */
+
     public static void savecars(){
         Cars xx = new Cars();
         System.out.println("save cars");
@@ -163,6 +208,11 @@ public class Cars  {
             i.printStackTrace();
         }
     }
+
+
+    /**
+     * method for load a file with a list of cars
+     */
 
     public static void loadcars() {
         Cars xx = new Cars();
