@@ -17,7 +17,7 @@ public class Main {
         String ch = "";
 
         // Welcome message
-        System.out.println("Bienvenue");
+        System.out.println("----****  BIENVENUE CHEZ GEGE-CARS  ****----");
 
         // Display the list of commands
 

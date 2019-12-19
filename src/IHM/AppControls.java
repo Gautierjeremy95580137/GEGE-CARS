@@ -29,7 +29,14 @@ public class AppControls {
         System.out.println("'returncar' : command for return a car");
         System.out.println("'listrent' : display the list of rents");
         System.out.println("'saveusers' : use this command for save your users file");
-        System.out.println("'restoreusers' : this command open your save users file");
+        System.out.println("'restoreusers' : use this command open your save users file");
+        System.out.println("'serialusers' : use this command serialize object users");
+        System.out.println("'saverents' : use this command save the list of rents in file");
+        System.out.println("'loadrents' : use this command load the list from file");
+        System.out.println("'savecars' : use this command for save the list of cars in a file");
+        System.out.println("'loadcars' : use this command for  import the list from file ");
+        System.out.println("'saveall' : use this command for save all the list in a file");
+        System.out.println("'loadall' : use this command for import all the list from file");
         System.out.println("----------------------------------");
 
     }

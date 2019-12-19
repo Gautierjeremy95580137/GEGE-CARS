@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GEGE-CARS:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GEGE_CARS_jar</output-path>
+    <root id="archive" name="GEGE-CARS.jar">
+      <element id="module-output" name="GEGE-CARS" />
+    </root>
+  </artifact>
+</component>
