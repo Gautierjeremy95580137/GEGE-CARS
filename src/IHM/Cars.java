@@ -1,5 +1,6 @@
 package IHM;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -139,6 +140,46 @@ public class Cars  {
         }
         if (gotit == 0) {
             System.out.println("user not found !");
+        }
+
+
+    }
+    public static void savecars(){
+        Cars xx = new Cars();
+        System.out.println("save cars");
+        String outtext;
+        try {
+            File rentfile = new File("cars.csv");
+            FileWriter out = new FileWriter(rentfile);
+            for (int i = 0; i < listcars.size();i++) {
+                xx = listcars.get(i);
+                String newline = System.getProperty("line.separator");
+                outtext = xx.getBrand()+ ";"+ xx.getModel()+ ";"+ xx.getReference()+ ";"+ xx.getYear()+ newline;
+                out.write(outtext);
+            }
+            out.close();
+            System.out.println("cars data saved in cars.csv");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public static void loadcars() {
+        Cars xx = new Cars();
+        System.out.println("Load cars");
+        listcars.clear();
+        try {
+            File fileload = new File("cars.csv");
+            BufferedReader in = new BufferedReader(new FileReader(fileload));
+            String st;
+            while((st = in.readLine()) != null) {
+                String[] strs = st.split("[,//;]");
+                addcar(strs[0], strs[1], strs[2],Integer.parseInt(strs[3]));
+            }
+            in.close();
+            System.out.println("cars data restored from cars.csv");
+        } catch (IOException i) {
+            i.printStackTrace();
         }
 
 

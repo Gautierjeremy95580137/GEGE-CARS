@@ -1,8 +1,10 @@
 package IHM;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.*;
 
 public class AppControls {
 
@@ -26,18 +28,23 @@ public class AppControls {
         System.out.println("'rentcar' : command for rent a car");
         System.out.println("'returncar' : command for return a car");
         System.out.println("'listrent' : display the list of rents");
-        System.out.println("'save' : use this command for save your file");
-        System.out.println("'restore' : this command open your save file");
+        System.out.println("'saveusers' : use this command for save your users file");
+        System.out.println("'restoreusers' : this command open your save users file");
         System.out.println("----------------------------------");
 
     }
+
+    /**
+     * to scan the keyboard
+     * @return keyboard scan
+     */
 
     public static String KeyboardScan(){
 
         System.out.println("Enter a command : ");
         Scanner sc = new Scanner(System.in);
         String command = sc.next().toLowerCase();
-        if(command.equals("help") || command.equals("exit") || command.equals("adduser") || command.equals("edituser") || command.equals("removeuser") || command.equals("listusers") || command.equals("addcar") || command.equals("editcar") || command.equals("removecar") || command.equals("listcars") || command.equals("rentcar") || command.equals("returncar") || command.equals("listrent") || command.equals("save") || command.equals("restore")) {
+        if(command.equals("help") || command.equals("exit") || command.equals("adduser") || command.equals("edituser") || command.equals("removeuser") || command.equals("listusers") || command.equals("addcar") || command.equals("editcar") || command.equals("removecar") || command.equals("listcars") || command.equals("rentcar") || command.equals("returncar") || command.equals("listrents") || command.equals("saveusers") || command.equals("restoreusers") || command.equals("serialusers" )|| command.equals("saverents") || command.equals("loadrents") || command.equals("savecars") || command.equals("loadcars") || command.equals("saveall") || command.equals("loadall")) {
             return command;
         } else {
             return "error";
@@ -45,13 +52,18 @@ public class AppControls {
 
     }
 
+    /**
+     *
+     * @param commands
+     */
+
     public static void commandsAction(String commands) {
 
-        if(commands.equals("help")){
+        if (commands.equals("help")) {
             helpCommand();
-        } else if (commands.equals("exit")){
+        } else if (commands.equals("exit")) {
             exitCommand();
-        } else if (commands.equals("adduser")){
+        } else if (commands.equals("adduser")) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Add a new user");
             System.out.println("Firstname ?");
@@ -60,20 +72,29 @@ public class AppControls {
             String ln = sc.nextLine();
             System.out.println("country ?");
             String cy = sc.nextLine();
-            int a;
-            int dep;
+            int a = 0;
+            int dep = 0;
+           // boolean flag = true;
             do {
-                System.out.println("departement ? (between 1 and 95");
-                a = Integer.valueOf(sc.nextLine());
-                dep = a;
-            } while (a > 95 || a < 1);
+               //do {
+                    //try {
+                        System.out.println("departement ? (between 1 and 95");
+                        // a = Integer.valueOf(sc.nextInt());
+                        a = Integer.valueOf(sc.nextLine());
+                        dep = a;
+                       // flag = false;
+                    //} catch (InputMismatchException exception) {
+                       // System.out.println("integers only please");
+                    //}
+               // }while (flag);
+            }while (a > 95 || a < 1);
             do {
                 System.out.println("age ? (must be between 18 years and 110 years");
                 a = Integer.valueOf(sc.nextLine());
             } while (a > 110 || a < 18);
-            Users.adduser(fn, ln , cy , dep , a);
+            Users.adduser(fn, ln, cy, dep, a);
 
-        } else if (commands.equals("listusers")){
+        } else if (commands.equals("listusers")) {
             Users.userlist();
 
         } else if (commands.equals("edituser")) {
@@ -84,7 +105,7 @@ public class AppControls {
             String fn = sc.nextLine();
             System.out.println("Lastname ? ");
             String ln = sc.nextLine();
-            Users.edituser(fn , ln);
+            Users.edituser(fn, ln);
 
         } else if (commands.equals("removeuser")) {
             Users xx = new Users();
@@ -107,7 +128,7 @@ public class AppControls {
             String ref = sc.nextLine();
             System.out.println("year ? ");
             int ye = Integer.valueOf(sc.nextLine());
-            Cars.addcar(br, mo , ref , ye);
+            Cars.addcar(br, mo, ref, ye);
             System.out.println("a new car is added");
 
         } else if (commands.equals("editcar")) {
@@ -126,7 +147,7 @@ public class AppControls {
             String ref = sc.nextLine();
             Cars.removecar(ref);
 
-        } else if(commands.equals("listcars")) {
+        } else if (commands.equals("listcars")) {
             Cars.carlist();
 
         } else if (commands.equals("rentcar")) {
@@ -138,9 +159,13 @@ public class AppControls {
             String ln = sc.nextLine();
             System.out.println("Reference: ");
             String ref = sc.nextLine();
+            System.out.println("day of rent");
+            String dr = sc.nextLine();
+            System.out.println("day of rental return");
+            String dor = sc.nextLine();
 
             System.out.println("New rent added");
-            Rents.rentcar(fn, ln ,ref);
+            Rents.rentcar(fn, ln, ref, dr,dor);
 
         } else if (commands.equals("returncar")) {
             Rents xx = new Rents();
@@ -150,9 +175,43 @@ public class AppControls {
             String ref = sc.nextLine();
             Rents.returncar(ref);
 
-        }
+        } else if (commands.equals("listrents")) {
+            Rents.listrent();
 
+        } else if (commands.equals("saveusers")) {
+            Users.saveusers();
+
+        } else if (commands.equals("restoreusers")) {
+            Users.loadusers();
+
+        } else if(commands.equals("serialusers")) {
+            System.out.println("user object serialization test");
+            Users.serialUsers();
+
+        } else if (commands.equals("saverents")) {
+            Rents.saverents();
+        }else if(commands.equals("loadrents")) {
+            Rents.loadrents();
+        }else if (commands.equals("savecars")) {
+            Cars.savecars();
+        }else if (commands.equals("loadcars")) {
+            Cars.loadcars();
+        }else if (commands.equals("saveall")) {
+            Users.saveusers();
+            Cars.savecars();
+            Rents.saverents();
+        }else if (commands.equals("loadall")) {
+            Users.loadusers();
+            Cars.loadcars();
+            Rents.loadrents();
+        } else {
+            System.out.println("command not found ! try again");
+        }
     }
+
+    /**
+     * to exit app
+     */
 
     private static void exitCommand() {
         System.out.println("goodbye");
