@@ -22,6 +22,7 @@ public class Cars  {
     private String Model;
     private String reference;
     private int year;
+    private static int existebis;
 
 
     /**
@@ -33,6 +34,7 @@ public class Cars  {
         this.Model = Model;
         this.reference = reference;
         this.year = year;
+        this.existebis = existebis;
 
     }
 
@@ -85,12 +87,18 @@ public class Cars  {
 
     public static void addcar(String br, String mo, String ref, int ye) {
 
-        Cars xx = new Cars();
-        xx.SetBrand(br);
-        xx.SetModel(mo);
-        xx.SetRef(ref);
-        xx.SetYear(ye);
-        listcars.add(xx);
+        String target = ref.toUpperCase();
+        searchref(ref);
+        if (existebis == 0) {
+            Cars xx = new Cars();
+            xx.SetBrand(br);
+            xx.SetModel(mo);
+            xx.SetRef(ref);
+            xx.SetYear(ye);
+            listcars.add(xx);
+        } else {
+            System.out.println("error, ref already exist");
+        }
     }
 
 
@@ -234,6 +242,31 @@ public class Cars  {
 
 
     }
+
+    /**
+     * method for test if ref exist in list of cars
+     * @param ref
+     * @return if ref of car is already exist
+     */
+
+    public static int searchref(String ref) {
+        String target = ref.toUpperCase() ;
+        existebis = 0;
+        Cars xx = new Cars();
+        for (int i = 0; i < listcars.size(); i++) {
+            xx = listcars.get(i);
+            String record = xx.getReference().toUpperCase() ;
+            if (record.equals(target)) {
+                existebis = 1;
+                break;
+
+
+            } else {
+                existebis = 0;
+            }
+        }
+
+        return existebis;}
 
 }
 

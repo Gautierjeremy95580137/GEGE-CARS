@@ -54,12 +54,12 @@ public class Rents  {
     public void setReference(String ref) {
         reference = ref;
     }
+
     public void setDay_of_rent(String dr) {
         Day_of_rent = dr;
     }
-    public void setDay_rental_return(String dor) {
-        Day_rental_return = dor;
-    }
+
+    public void setDay_rental_return(String dor) { Day_rental_return = dor; }
 
     public String getFirstname() {
         return (Firstname);
@@ -94,12 +94,19 @@ public class Rents  {
     public static void rentcar(String fn, String ln, String ref, String dr, String dor){
 
         Rents xx = new Rents();
-        xx.setFirstname(fn);
-        xx.setLastname(ln);
-        xx.setReference(ref);
-        xx.setDay_of_rent(dr);
-        xx.setDay_rental_return(dor);
-        listrents.add(xx);
+        int ty = Users.searchUser(fn,ln);
+        int to = Cars.searchref(ref);
+        if (ty == 1 && to == 1) {
+            xx.setFirstname(fn);
+            xx.setLastname(ln);
+            xx.setReference(ref);
+            xx.setDay_of_rent(dr);
+            xx.setDay_rental_return(dor);
+            listrents.add(xx);
+        }else {
+            System.out.println(" user or reference doesn't exist !");
+            System.out.println("please add a new user first or a new car !");
+        }
 
     }
 
